@@ -1,0 +1,96 @@
+.homepage {
+  display: flex;
+  height: 100vh;
+  justify-content: space-between;
+  overflow: hidden;
+
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+    background: linear-gradient(rgba(21, 21, 21, 0.9), rgba(21, 21, 21, 0.7)),
+      url(../../../public/curioscat.png);
+    height: 100vh; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-color: rgba(21, 21, 21, 0.9);
+    background-size: cover;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    width: 60vw;
+    text-align: left;
+    padding: 0 64px;
+
+    @media screen and (max-width: 1024px) {
+      width: 100vw;
+      padding: unset;
+      align-items: center;
+      margin-top: 15vh;
+    }
+
+    h1 {
+      font-size: 108px;
+      color: var(--other-color);
+
+      @media screen and (max-width: 1024px) {
+        font-size: 60px;
+      }
+    }
+
+    h2 {
+      @media screen and (max-width: 1024px) {
+        text-align: center;
+        width: 90vw;
+      }
+    }
+
+    h3 {
+      width: 55vw;
+      line-height: 1.5;
+      font-weight: 300;
+      @media screen and (max-width: 1024px) {
+        text-align: center;
+        width: 90vw;
+        font-size: 25px;
+      }
+    }
+
+    .button {
+      width: 144px;
+      padding: 10px;
+      font-size: var(--font-size);
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+       @media screen and (max-width: 1024px) {
+        margin-top: 5vh;
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+
+    @media screen and (max-width: 1024px) {
+      display: none;
+    }
+
+    img {
+      max-height: 100%;
+      @media screen and (max-width: 1024px) {
+        width: 100vw;
+        max-height: 40vh;
+        height: 70%;
+        object-fit: contain;
+      }
+    }
+  }
+}
