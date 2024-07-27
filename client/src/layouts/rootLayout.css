@@ -1,14 +1,13 @@
 .rootLayout {
-  /* padding: 16px 64px; */
-  height: "100vh";
+  padding: 16px 64px;
+  height: 100vh;
+  display: flex;
   flex-direction: column;
-  overflow: hidden;
 
   header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 64px;
 
     .logo {
       display: flex;
@@ -24,6 +23,7 @@
   }
 
   main {
-    flex: 1px;
+    flex: 1;
+    overflow: hidden;
   }
 }
