@@ -1,43 +1,57 @@
 import "./chatPage.css";
 import NewPrompt from "../../components/newPrompt/NewPrompt";
+import { useQuery } from "@tanstack/react-query";
+import { useLocation } from "react-router-dom";
+import Markdown from "react-markdown";
+import { IKImage } from "imagekitio-react";
 
 const ChatPage = () => {
+  const path = useLocation().pathname;
+  const chatId = path.split("/").pop();
+
+  const { isPending, error, data } = useQuery({
+    queryKey: ["chat", chatId],
+    queryFn: () =>
+      fetch(`${import.meta.env.VITE_API_URL}/api/chats/${chatId}`, {
+        credentials: "include",
+      }).then((res) => res.json()),
+  });
+
+  console.log(data);
+
   return (
     <div className="chatPage">
       <div className="wrapper">
         <div className="chat">
-          <div className="message">
-            txt message from ai Lorem ipsum, dolor sit amet consectetur
-            adipisicing elit. Accusamus voluptate, voluptatem porro autem earum
-            non neque dicta officia, soluta perferendis dolor exercitationem.
-            Accusantium vel sed aliquid aut architecto iste voluptatem quam
-            laboriosam esse soluta, eaque assumenda a debitis cumque excepturi
-            nostrum odit odio. Itaque soluta sapiente omnis, illum fugiat sit in
-            velit cumque. Ipsam obcaecati architecto culpa, laboriosam illum rem
-            aliquid. Aspernatur labore perspiciatis magni, earum eum vitae in,
-            recusandae modi provident ut sint. Nobis vero autem, itaque
-            deleniti, culpa similique expedita labore dignissimos perspiciatis
-            ratione aperiam quo harum repudiandae tenetur at maxime ex porro.
-            Illum, harum aspernatur! Nihil, eaque?
-          </div>
-          <div className="message user">
-            Test Message from user Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Quod libero facere laudantium deleniti enim magni
-            error molestiae officia quo voluptate suscipit ipsam corrupti rerum
-            adipisci maiores aut, mollitia beatae nostrum.
-          </div>
-          <div className="message">txt message from ai</div>
-          <div className="message user">Test Message from user</div>
-          <div className="message">txt message from ai</div>
-          <div className="message user">Test Message from user</div>
-          <div className="message">txt message from ai</div>
-          <div className="message user">Test Message from user</div>
-          <div className="message">txt message from ai</div>
-          <div className="message user">Test Message from user</div>
-          <div className="message">txt message from ai</div>
-          <div className="message user">Test Message from user</div>
-          <div className="message">txt message from ai</div>
-          <NewPrompt />
+          {isPending
+            ? "Loading..."
+            : error
+            ? "Something went wrong!"
+            : data?.history?.map((message, i) => (
+                <>
+                  {message.img && (
+                    <IKImage
+                      urlEndpoint={import.meta.env.VITE_IMAGE_KIT_ENDPOINT}
+                      path={message.img}
+                      height="300"
+                      width="400"
+                      transformation={[{ height: 300, width: 400 }]}
+                      loading="lazy"
+                      lqip={{ active: true, quality: 20 }}
+                    />
+                  )}
+                  <div
+                    className={
+                      message?.role === "user" ? "message user" : "message"
+                    }
+                    key={i}
+                  >
+                    <Markdown>{message.parts[0].text}</Markdown>
+                  </div>
+                </>
+              ))}
+
+          {data && <NewPrompt data={data} />}
         </div>
       </div>
     </div>

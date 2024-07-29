@@ -13,6 +13,7 @@
     opacity: 0.1;
     border-radius: 5px;
     margin: 20px 0px;
+    width: 300px;
   }
 
   .title {
@@ -27,17 +28,21 @@
     overflow-y: auto;
     flex-grow: 1;
 
-     /* Webkit scrollbar styles */
+    /* Webkit scrollbar styles */
     &::-webkit-scrollbar {
       width: 12px; /* Width of the scrollbar */
     }
 
     &::-webkit-scrollbar-track {
-      background: var(--scrollbar-track-color); /* Background of the scrollbar track */
+      background: var(
+        --scrollbar-track-color
+      ); /* Background of the scrollbar track */
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: var(--scrollbar-thumb-color); /* Color of the scrollbar thumb */
+      background-color: var(
+        --scrollbar-thumb-color
+      ); /* Color of the scrollbar thumb */
       border-radius: 10px; /* Rounded corners */
       border: 3px solid var(--scrollbar-track-color); /* Padding around the thumb */
     }
@@ -46,43 +51,42 @@
     scrollbar-width: thin; /* Make scrollbar thinner */
     scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color); /* Thumb and track colors */
   }
+}
+
+a {
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    background-color: var(--light-primary-color);
+  }
+}
+
+.upgrade {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  margin-top: 20px;
+
+  img {
+    width: 24px;
+    height: 24px;
   }
 
-  a {
-    padding: 10px;
-    border-radius: 10px;
-    text-decoration: none;
-    color: inherit;
-
-    &:hover {
-      background-color: var(--light-primary-color);
-    }
-  }
-
-  .upgrade {
+  .text {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 12px;
-    margin-top: 20px;
+    flex-direction: column;
 
-    img {
-      width: 24px;
-      height: 24px;
-    }
+    span {
+      &:first-child {
+        font-weight: 600;
+      }
 
-    .text {
-      display: flex;
-      flex-direction: column;
-
-      span {
-        &:first-child {
-          font-weight: 600;
-        }
-
-        &:last-child {
-          color: #888;
-        }
+      &:last-child {
+        color: #888;
       }
     }
   }

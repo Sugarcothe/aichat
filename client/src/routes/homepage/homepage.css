@@ -3,6 +3,7 @@
   height: 100vh;
   justify-content: space-between;
   overflow: hidden;
+    padding: -16px -64px;
 
   @media screen and (max-width: 1024px) {
     flex-direction: column;
@@ -78,6 +79,7 @@
     display: flex;
     align-items: flex-end;
     height: 100%;
+    
 
     @media screen and (max-width: 1024px) {
       display: none;
