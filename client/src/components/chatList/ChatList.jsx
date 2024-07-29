@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 import "./chatList.css";
 import { useQuery } from "@tanstack/react-query";
 
-const ChatList = () => {
-   const { isPending, error, data } = useQuery({
-     queryKey: ["userChats"],
-     queryFn: () =>
-       fetch(`${import.meta.env.VITE_API_URL}/api/userchats`, {
-         credentials: "include",
-       }).then((res) => res.json()),
-   });
+const ChatList = ({ isOpen }) => {
+  const { isPending, error, data } = useQuery({
+    queryKey: ["userChats"],
+    queryFn: () =>
+      fetch(`${import.meta.env.VITE_API_URL}/api/userchats`, {
+        credentials: "include",
+      }).then((res) => res.json()),
+  });
 
   return (
     <div className="chatList">

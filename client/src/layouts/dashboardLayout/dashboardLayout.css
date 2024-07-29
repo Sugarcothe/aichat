@@ -5,12 +5,23 @@
   height: 100%;
   padding: 16px 64px;
 
+  @media (width <= 1050px) {
+    padding: 5px 0px;
+    width: 100vw;
+    gap: unset;
+  }
+
   .menu {
     flex: 1;
+    @media (width <= 1050px) {
+      flex: unset;
+    }
   }
 
   .content {
     flex: 4;
     background-color: var(--light-primary-color);
+    
   }
+ 
 }

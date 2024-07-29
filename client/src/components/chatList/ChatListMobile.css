@@ -1,4 +1,4 @@
-.chatList {
+.chatListMobile {
   display: flex;
   flex-direction: column;
   height: 90vh;
@@ -9,7 +9,7 @@
   
 
   @media (width <= 1050px) {
-    display: none;
+    /* display: none; */
     position: fixed;
     top: 0;
     left: -300px; /* Adjust based on the width of the chatList */

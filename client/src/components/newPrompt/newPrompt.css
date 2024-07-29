@@ -12,6 +12,12 @@
   gap: 20px;
   padding: 0px 20px;
 
+  @media (width <= 1050px) {
+   width: 90%;
+   border-radius: 10px;
+   margin-bottom: 10px;
+  }
+
   input {
     flex: 1;
     padding: 20px;
@@ -23,7 +29,7 @@
 
   button,
   label {
-    border-radius: 50%;
+    border-radius: 20%;
     background-color: #605e68;
     border: none;
     padding: 10px;
