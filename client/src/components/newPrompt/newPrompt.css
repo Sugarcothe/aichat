@@ -10,12 +10,12 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 0px 20px;
+  padding: 20px;
 
   @media (width <= 1050px) {
-   width: 90%;
-   border-radius: 10px;
-   margin-bottom: 10px;
+    width: 90%;
+    border-radius: 10px;
+    margin-bottom: 10px;
   }
 
   input {
@@ -25,6 +25,9 @@
     outline: none;
     background-color: transparent;
     color: #ececec;
+    @media (width <= 1050px) {
+      padding: 10px;
+    }
   }
 
   button,

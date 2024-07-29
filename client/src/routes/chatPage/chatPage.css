@@ -5,6 +5,9 @@
   align-items: center;
   position: relative;
   width: 100%;
+  @media (width <= 1050px) {
+    height: 90vh;
+  }
 
   .wrapper {
     flex: 1;
